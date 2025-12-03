@@ -3,102 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merah Putih</title>
+    <title>Merah Putih E-Commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. NAVIGASI BAR -->
+    //navigasi bar
     <header>
         <nav>
-            <div class="logo"><img src="delapanpuluh.png" alt="Logo TokoOnline" style="max-height: 40px;"></div>
-            <p>Merah Putih E-Commerce</p>
-            <div id="nav-links">
+            <div class="logo">
+                <img src="delapanpuluh.png" alt="Logo Merah Putih" style="max-height: 50px;">
+                <span>Merah Putih</span>
+            </div>
+            <div class="nav-right">
+                <div class="user-balance">
+                    Saldo: <span id="balance-amount">Rp 0</span>
+                </div>
                 <ul>
-                    <li><a href="#" id="nav-beranda">Beranda</a></li>
-                    <li><a href="#" id="nav-keranjang">Keranjang <span id="cart-count">0</span></a></li>
+                    <li><a href="#" id="nav-beranda"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#" id="nav-keranjang">
+                        <i class="fas fa-shopping-cart"></i> Keranjang <span id="cart-count">0</span>
+                    </a></li>
                 </ul>
             </div>
-            <button id="hamburger-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
         </nav>
     </header>
 
     <main>
-        <!-- 2. HALAMAN BERANDA (DAFTAR PRODUK) -->
         <section id="page-beranda" class="page">
-            <h1>Produk Tersedia</h1>
-            <div id="product-list" class="product-grid">
-            </div>
-        </section>
-
-        <!-- 3. HALAMAN DETAIL PRODUK (SEMBUNYI SECARA DEFAULT) -->
-        <section id="page-detail-produk" class="page hidden">
-            <div class="detail-container">
-                <div class="detail-img">
-                    <img id="detail-gambar" src="" alt="Gambar Produk">
-                </div>
-                <div class="detail-info">
-                    <h2 id="detail-nama">Nama Produk</h2>
-                    <p class="price" id="detail-harga">Rp 0</p>
-                    <h3>Deskripsi</h3>
-                    <p id="detail-deskripsi">Deskripsi produk akan muncul di sini.</p>
-                    <h3>Review</h3>
-                    <div class="reviews">
-                        <p><strong>Andi:</strong> Barangnya bagus, pengiriman cepat!</p>
-                        <p><strong>Budi:</strong> Sesuai dengan ekspektasi. Mantap!</p>
-                    </div>
-                    <button id="add-to-cart-btn">Masukkan ke Keranjang</button>
-                    <button id="checkout-now-btn">Beli Sekarang</button>
-                    <button id="back-to-home-btn">Kembali</button>
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>Merah Putih</h1>
+                    <p>Koleksi Terbaik Kerajinan Tangan Indonesia</p>
                 </div>
             </div>
+
+            <h2>Produk Pilihan</h2>
+            <div id="product-list" class="product-grid"></div>
         </section>
 
-        <!-- 4. HALAMAN KERANJANG (SEMBUNYI SECARA DEFAULT) -->
+        <section id="page-detail-produk" class="page hidden"></section>
+
         <section id="page-keranjang" class="page hidden">
-            <h1>Keranjang Belanja</h1>
-            <div id="cart-items-container">
-            </div>
+            <h1><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h1>
+            <div id="cart-items-container"></div>
             <div class="cart-total">
-                <h3>Total: <span id="cart-total-price">Rp 0</span></h3>
-                <button id="checkout-btn" class="checkout-button">Checkout</button>
+                <h3>Total Belanja: <span id="cart-total-price">Rp 0</span></h3>
+                <button id="checkout-btn" class="checkout-button">
+                    <i class="fas fa-credit-card"></i> Lanjutkan ke Pembayaran
+                </button>
             </div>
         </section>
 
-        <!-- 5. HALAMAN CHECKOUT (SEMBUNYI SECARA DEFAULT) -->
         <section id="page-checkout" class="page hidden">
-            <h1>Formulir Pembayaran</h1>
+            <h1><i class="fas fa-file-invoice"></i> Formulir Pembayaran</h1>
             <form id="payment-form">
-                <label for="nama">Nama Lengkap:</label>
-                <input type="text" id="nama" name="nama" required>
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Informasi Pembeli</h3>
+                    
+                    <label for="nama">Nama Lengkap <span class="required">*</span></label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
 
-                <label for="alamat">Alamat Pengiriman:</label>
-                <textarea id="alamat" name="alamat" required></textarea>
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
 
-                <label>Metode Pembayaran:</label>
-                <div class="payment-options">
-                    <input type="radio" id="cod" name="payment" value="cod" checked>
-                    <label for="cod">Bayar di Tempat (COD)</label>
+                    <label for="telepon">Nomor Telepon <span class="required">*</span></label>
+                    <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required>
+
+                    <label for="alamat">Alamat Pengiriman <span class="required">*</span></label>
+                    <textarea id="alamat" name="alamat" rows="4" placeholder="Masukkan alamat lengkap" required></textarea>
                 </div>
-                <div class="payment-options">
-                    <input type="radio" id="transfer" name="payment" value="transfer">
-                    <label for="transfer">Transfer Bank</label>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-wallet"></i> Metode Pembayaran</h3>
+                    
+                    <div class="payment-method-group">
+                        <label class="payment-method-label">
+                            <input type="radio" name="payment-type" value="saldo" checked>
+                            <div class="payment-method-card">
+                                <i class="fas fa-wallet"></i>
+                                <span>Saldo E-Commerce</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-method-label">
+                            <input type="radio" name="payment-type" value="bank">
+                            <div class="payment-method-card">
+                                <i class="fas fa-university"></i>
+                                <span>Transfer Bank</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-method-label">
+                            <input type="radio" name="payment-type" value="ewallet">
+                            <div class="payment-method-card">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>E-Wallet</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-method-label">
+                            <input type="radio" name="payment-type" value="cod">
+                            <div class="payment-method-card">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>COD (Bayar di Tempat)</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div id="payment-detail-saldo" class="payment-detail">
+                        <div class="info-box">
+                            <p>Saldo Anda: <strong id="checkout-balance">Rp 0</strong></p>
+                            <p>Total Belanja: <strong id="checkout-total">Rp 0</strong></p>
+                            <p>Sisa Saldo: <strong id="checkout-remaining">Rp 0</strong></p>
+                        </div>
+                    </div>
+
+                    <div id="payment-detail-bank" class="payment-detail hidden">
+                        <label>Pilih Bank</label>
+                        <div class="bank-options">
+                            <label class="bank-option">
+                                <input type="radio" name="bank" value="bca">
+                                <div class="bank-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>BCA</span>
+                                </div>
+                            </label>
+                            <label class="bank-option">
+                                <input type="radio" name="bank" value="mandiri">
+                                <div class="bank-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>Mandiri</span>
+                                </div>
+                            </label>
+                            <label class="bank-option">
+                                <input type="radio" name="bank" value="bni">
+                                <div class="bank-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>BNI</span>
+                                </div>
+                            </label>
+                            <label class="bank-option">
+                                <input type="radio" name="bank" value="bri">
+                                <div class="bank-card">
+                                    <i class="fas fa-university"></i>
+                                    <span>BRI</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="info-box">
+                            <p><i class="fas fa-info-circle"></i> Nomor rekening akan dikirim setelah konfirmasi pesanan</p>
+                        </div>
+                    </div>
+
+                    <div id="payment-detail-ewallet" class="payment-detail hidden">
+                        <label>Pilih E-Wallet</label>
+                        <div class="ewallet-options">
+                            <label class="ewallet-option">
+                                <input type="radio" name="ewallet" value="gopay">
+                                <div class="ewallet-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>GoPay</span>
+                                </div>
+                            </label>
+                            <label class="ewallet-option">
+                                <input type="radio" name="ewallet" value="ovo">
+                                <div class="ewallet-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>OVO</span>
+                                </div>
+                            </label>
+                            <label class="ewallet-option">
+                                <input type="radio" name="ewallet" value="dana">
+                                <div class="ewallet-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>DANA</span>
+                                </div>
+                            </label>
+                            <label class="ewallet-option">
+                                <input type="radio" name="ewallet" value="shopeepay">
+                                <div class="ewallet-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>ShopeePay</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="info-box">
+                            <p><i class="fas fa-info-circle"></i> Link pembayaran akan dikirim ke email Anda</p>
+                        </div>
+                    </div>
+
+                    <!-- Detail COD -->
+                    <div id="payment-detail-cod" class="payment-detail hidden">
+                        <div class="info-box">
+                            <p><i class="fas fa-info-circle"></i> Pembayaran dilakukan saat barang diterima</p>
+                            <p>Siapkan uang pas sejumlah: <strong id="cod-total">Rp 0</strong></p>
+                        </div>
+                    </div>
                 </div>
-                
-                <button type="submit" class="checkout-button">Konfirmasi Pembayaran</button>
+
+                <button type="submit" class="checkout-button">
+                    <i class="fas fa-check-circle"></i> Konfirmasi Pembayaran
+                </button>
             </form>
         </section>
 
+        <section id="page-nota" class="page hidden">
+            <div class="nota-container">
+                <div class="nota-header">
+                    <h2><i class="fas fa-receipt"></i> Struk Pembayaran</h2>
+                    <p><strong>ID Pesanan:</strong> <span id="nota-order-id"></span></p>
+                    <p><strong>Tanggal:</strong> <span id="nota-date"></span></p>
+                </div>
+                
+                <div class="nota-customer">
+                    <h4>Informasi Pembeli:</h4>
+                    <p><strong>Nama:</strong> <span id="nota-nama"></span></p>
+                    <p><strong>Email:</strong> <span id="nota-email"></span></p>
+                    <p><strong>Telepon:</strong> <span id="nota-telepon"></span></p>
+                    <p><strong>Alamat:</strong> <span id="nota-alamat"></span></p>
+                </div>
+                
+                <div class="nota-items">
+                    <h4>Detail Pesanan:</h4>
+                    <table id="nota-items-table">
+                        <thead>
+                            <tr>
+                                <th>Produk</th>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+                <div class="nota-total">
+                    <p><strong>Metode Pembayaran:</strong> <span id="nota-payment"></span></p>
+                    <h3>Total: <span id="nota-total-price"></span></h3>
+                </div>
+                
+                <div class="nota-footer">
+                    <p>Terima kasih telah berbelanja di Merah Putih!</p>
+                    <p>Barang akan segera kami proses dan kirim ke alamat Anda.</p>
+                </div>
+                
+                <div class="nota-actions">
+                    <button id="print-nota-btn"><i class="fas fa-print"></i> Cetak Nota</button>
+                    <button id="back-to-home-btn"><i class="fas fa-home"></i> Kembali ke Beranda</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Merah Putih.</p>
+        <p>&copy; 2025 Merah Putih E-Commerce.</p>
     </footer>
 
     <script src="script.js"></script>
