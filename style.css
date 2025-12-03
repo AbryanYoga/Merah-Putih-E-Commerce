@@ -10,14 +10,14 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ff0000;
+    background-color: #f4f4f9;
     color: #333;
     line-height: 1.6;
 }
 
 /* 1. Navigasi Bar */
 header {
-    background-color: #ffffff;
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 1rem 5%;
     position: sticky;
@@ -25,10 +25,17 @@ header {
     z-index: 1000;
 }
 
+/* SEMBUNYIKAN HAMBURGER BUTTON */
+#hamburger-btn {
+    display: none !important;
+}
+
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 nav .logo {
@@ -37,10 +44,16 @@ nav .logo {
     color: #5a67d8;
 }
 
+/* Sembunyikan teks "Merah Putih E-Commerce" */
+nav p {
+    display: none;
+}
+
 nav ul {
     list-style: none;
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 nav ul li a {
@@ -48,6 +61,7 @@ nav ul li a {
     color: #555;
     font-weight: 600;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -104,8 +118,8 @@ main {
 }
 
 .product-item:hover {
-    transform: translateY(10px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
 .product-item img {
@@ -256,10 +270,6 @@ button:hover {
 }
 
 
-
-
-
-
 /* Footer */
 footer {
     text-align: center;
@@ -269,47 +279,97 @@ footer {
     color: #fff;
 }
 
-#hamburger-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* Responsif untuk Tablet dan Layar Menengah */
-@media (max-width: 992px) {
-    nav p {
-        display: none;
-    }
-}
-
 /* Responsif untuk Mobile */
 @media (max-width: 768px) {
-    #nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    header {
+        padding: 0.8rem 3%;
     }
-
-    #nav-links.nav-active {
-        display: block;
-    }
-
-    nav ul {
-        flex-direction: column;
+    
+    nav {
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
-        padding: 1rem 0;
+        gap: 0.5rem;
+    }
+    
+    /* Logo disembunyikan di mobile */
+    nav .logo {
+        display: none;
+    }
+    
+    nav ul {
+        gap: 1.5rem;
+        justify-content: center;
+        width: auto;
+    }
+    
+    nav ul li a {
+        font-size: 1rem;
     }
 
-    #hamburger-btn {
-        display: block;
+    /* Product grid lebih kecil di mobile */
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .product-item img {
+        height: 150px;
+    }
+    
+    .product-item h3 {
+        font-size: 1rem;
     }
 
+    /* Detail container stack vertikal */
     .detail-container {
         flex-direction: column;
+    }
+    
+    .detail-img {
+        min-width: 100%;
+    }
+    
+    /* Padding lebih kecil di mobile */
+    main {
+        padding: 1rem 3%;
+    }
+    
+    .page {
+        padding: 1rem;
+    }
+    
+    /* Button stack vertikal di mobile */
+    .detail-info button {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Cart total lebih kecil */
+    .cart-total {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsif untuk Mobile Kecil */
+@media (max-width: 480px) {
+    nav ul {
+        gap: 1rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
     }
 }
