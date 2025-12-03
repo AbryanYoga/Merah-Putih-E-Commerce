@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* Reset dan Pengaturan Dasar */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -9,50 +9,60 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ff0000;
+    background-color: #f4f5f7;
     color: #333;
     line-height: 1.6;
 }
 
-/* 1. Navigasi Bar */
+/* Header & Navigasi */
 header {
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     padding: 1rem 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* SEMBUNYIKAN HAMBURGER BUTTON */
-#hamburger-btn {
-    display: none !important;
-}
-
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
 nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #5a67d8;
+    color: #fff;
 }
 
-/* Sembunyikan teks "Merah Putih E-Commerce" */
-nav p {
-    display: none;
+nav .logo span {
+    color: #c0392b;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.user-balance {
+    font-weight: 600;
+    color: #333;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 20px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 2rem;
-    flex-wrap: wrap;
 }
 
 nav ul li a {
@@ -60,88 +70,181 @@ nav ul li a {
     color: #555;
     font-weight: 600;
     transition: color 0.3s ease;
-    white-space: nowrap;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #c0392b;
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #5a67d8;
+    color: #c0392b;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 #cart-count {
-    background-color: #e53e3e;
+    background-color: #c0392b;
     color: #fff;
     border-radius: 50%;
-    padding: 0.1rem 0.4rem;
-    font-size: 0.8rem;
-    vertical-align: top;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    margin-left: 5px;
 }
 
-/* Konten Utama */
+/* Main Content */
 main {
     padding: 2rem 5%;
+    min-height: calc(100vh - 200px);
 }
 
 .page {
     background-color: #fff;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .page h1, .page h2 {
     margin-bottom: 1.5rem;
     color: #333;
-    border-bottom: 2px solid #eee;
+    border-bottom: 3px solid #c0392b;
     padding-bottom: 0.5rem;
+    display: inline-block;
 }
 
-/* Class untuk menyembunyikan elemen */
 .hidden {
     display: none;
 }
 
-/* 2. Halaman Beranda - Grid Produk */
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 350px;
+    background-image: url('kain.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(192, 57, 43, 0.7), rgba(0, 0, 0, 0.5));
+    border-radius: 12px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    border: none;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Product Grid */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .product-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background-color: #fff;
+    border-radius: 12px;
     overflow: hidden;
-    text-align: center;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .product-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .product-item img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
 }
 
-.product-item h3 {
-    margin: 1rem 0 0.5rem 0;
-    font-size: 1.2rem;
+.product-info {
+    padding: 1.2rem;
 }
 
-.product-item .price {
-    color: #5a67d8;
+.product-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
     font-weight: 600;
+    color: #333;
+}
+
+.product-info .price {
+    color: #c0392b;
+    font-weight: 700;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
 }
 
-/* 3. Halaman Detail Produk */
+.view-detail-btn {
+    display: inline-block;
+    background-color: #c0392b;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.view-detail-btn:hover {
+    background-color: #a5281b;
+}
+
+/* Detail Product */
+.back-button {
+    margin-bottom: 1.5rem;
+    background-color: #6c757d;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
 .detail-container {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     flex-wrap: wrap;
 }
 
@@ -152,223 +255,471 @@ main {
 
 .detail-img img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .detail-info {
-    flex: 2;
+    flex: 1.5;
 }
 
-.detail-info .price {
-    font-size: 1.5rem;
-    color: #5a67d8;
-    font-weight: 700;
+.detail-info h1 {
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.reviews {
-    margin-top: 1rem;
-    font-style: italic;
-    color: #666;
+.detail-info .price {
+    font-size: 2.2rem;
+    color: #c0392b;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
-button {
-    background-color: #5a67d8;
-    color: #fff;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
-    margin-right: 0.5rem;
-}
-
-button:hover {
-    background-color: #434190;
-}
-
-#back-to-home-btn {
-    background-color: #666;
-}
-#back-to-home-btn:hover {
-    background-color: #444;
-}
-
-/* 4. Halaman Keranjang */
+/* Cart Page */
 .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid #eee;
 }
 
 .cart-item-info {
-    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
 }
 
-.cart-item-info h4 {
-    margin-bottom: 0.2rem;
+.cart-item-info img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
 }
 
 .cart-item-actions {
     display: flex;
     align-items: center;
+    gap: 1rem;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
 }
 
-.cart-item-actions button {
-    padding: 0.2rem 0.5rem;
-    font-size: 0.8rem;
+.quantity-control button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
     margin: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    border-radius: 4px;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.4rem;
+    font-size: 1rem;
+}
+
+.remove-from-cart-btn {
+    background: none;
+    border: none;
+    color: #c0392b;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.remove-from-cart-btn:hover {
+    transform: scale(1.2);
+    background: none;
 }
 
 .cart-total {
     text-align: right;
     margin-top: 2rem;
-    font-size: 1.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid #eee;
+}
+
+.cart-total h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+button {
+    background-color: #c0392b;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background-color: #a5281b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .checkout-button {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.2rem;
-    margin-top: 1rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
 }
 
-
-/* 5. Halaman Checkout (Form) */
+/* Form Checkout */
 #payment-form {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
+}
+
+.form-section {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    margin-bottom: 1.5rem;
+    color: #c0392b;
+    font-size: 1.3rem;
 }
 
 #payment-form label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    color: #333;
+}
+
+.required {
+    color: #c0392b;
 }
 
 #payment-form input[type="text"],
+#payment-form input[type="email"],
+#payment-form input[type="tel"],
 #payment-form textarea {
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 0.9rem;
+    margin-bottom: 1.2rem;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-#payment-form .payment-options {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+#payment-form input:focus,
+#payment-form textarea:focus {
+    outline: none;
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+
+/* Payment Methods */
+.payment-method-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-method-label {
+    cursor: pointer;
+}
+
+.payment-method-label input[type="radio"] {
+    display: none;
+}
+
+.payment-method-card {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.payment-method-card i {
+    font-size: 2rem;
+    color: #c0392b;
     margin-bottom: 0.5rem;
 }
 
+.payment-method-card span {
+    display: block;
+    font-weight: 600;
+    color: #333;
+}
+
+.payment-method-label input[type="radio"]:checked + .payment-method-card {
+    border-color: #c0392b;
+    background-color: #fff5f5;
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.2);
+}
+
+.payment-method-card:hover {
+    border-color: #c0392b;
+    transform: translateY(-3px);
+}
+
+/* Payment Details */
+.payment-detail {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.info-box {
+    background-color: #e8f4f8;
+    border-left: 4px solid #3498db;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.info-box p {
+    margin-bottom: 0.5rem;
+}
+
+.info-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Bank & E-Wallet Options */
+.bank-options,
+.ewallet-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.bank-option,
+.ewallet-option {
+    cursor: pointer;
+}
+
+.bank-option input[type="radio"],
+.ewallet-option input[type="radio"] {
+    display: none;
+}
+
+.bank-card,
+.ewallet-card {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.bank-card i,
+.ewallet-card i {
+    font-size: 1.5rem;
+    color: #c0392b;
+    margin-bottom: 0.5rem;
+}
+
+.bank-card span,
+.ewallet-card span {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.bank-option input[type="radio"]:checked + .bank-card,
+.ewallet-option input[type="radio"]:checked + .ewallet-card {
+    border-color: #c0392b;
+    background-color: #fff5f5;
+}
+
+.bank-card:hover,
+.ewallet-card:hover {
+    border-color: #c0392b;
+}
+
+/* Nota */
+.nota-container {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 2px solid #ddd;
+    padding: 2.5rem;
+    border-radius: 8px;
+}
+
+.nota-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px dashed #ddd;
+}
+
+.nota-header h2 {
+    color: #c0392b;
+    margin-bottom: 1rem;
+}
+
+.nota-customer,
+.nota-items,
+.nota-total {
+    margin-bottom: 2rem;
+}
+
+.nota-customer h4,
+.nota-items h4 {
+    color: #c0392b;
+    margin-bottom: 1rem;
+}
+
+#nota-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#nota-items-table th,
+#nota-items-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+#nota-items-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.nota-total {
+    text-align: right;
+    padding-top: 1.5rem;
+    border-top: 2px dashed #ddd;
+}
+
+.nota-total h3 {
+    font-size: 1.8rem;
+    color: #c0392b;
+}
+
+.nota-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed #ddd;
+    color: #666;
+}
+
+.nota-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 2rem 0;
-    margin-top: 2rem;
-    background-color: #333;
-    color: #fff;
+    padding: 2rem;
+    margin-top: 3rem;
+    background-color: #34495e;
+    color: #ecf0f1;
 }
 
-/* Responsif untuk Mobile */
-@media (max-width: 768px) {
-    header {
-        padding: 0.8rem 3%;
-    }
-    
-    nav {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    /* Logo disembunyikan di mobile */
-    nav .logo {
-        display: none;
-    }
-    
-    nav ul {
-        gap: 1.5rem;
-        justify-content: center;
-        width: auto;
-    }
-    
-    nav ul li a {
-        font-size: 1rem;
+/* Print Styles */
+@media print {
+    body, .page {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
     }
 
-    /* Product grid lebih kecil di mobile */
+    header, footer, .nota-actions {
+        display: none !important;
+    }
+
+    main {
+        padding: 0;
+    }
+
+    #page-nota {
+        display: block !important;
+    }
+
+    .nota-container {
+        border: none;
+        max-width: 100%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        justify-content: center;
+    }
+    
+    .nav-right {
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
     .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1rem;
     }
-    
-    .product-item img {
-        height: 150px;
-    }
-    
-    .product-item h3 {
-        font-size: 1rem;
-    }
 
-    /* Detail container stack vertikal */
     .detail-container {
         flex-direction: column;
     }
-    
-    .detail-img {
-        min-width: 100%;
-    }
-    
-    /* Padding lebih kecil di mobile */
-    main {
-        padding: 1rem 3%;
-    }
-    
-    .page {
-        padding: 1rem;
-    }
-    
-    /* Button stack vertikal di mobile */
-    .detail-info button {
-        display: block;
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Cart total lebih kecil */
-    .cart-total {
-        font-size: 1.2rem;
-    }
-}
 
-/* Responsif untuk Mobile Kecil */
-@media (max-width: 480px) {
-    nav ul {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 1rem;
     }
-    
-    nav ul li a {
-        font-size: 0.9rem;
+
+    .cart-item-actions {
+        width: 100%;
+        justify-content: space-between;
     }
-    
-    .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 0.8rem;
+
+    .payment-method-group {
+        grid-template-columns: 1fr 1fr;
     }
-    
-    button {
-        font-size: 0.9rem;
-        padding: 0.6rem 1rem;
+
+    .bank-options,
+    .ewallet-options {
+        grid-template-columns: 1fr 1fr;
     }
 }
