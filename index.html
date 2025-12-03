@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merah Putih</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. NAVIGASI BAR -->
+    <header>
+        <nav>
+            <div class="logo"><img src="delapanpuluh.png" alt="Logo TokoOnline" style="max-height: 40px;"></div>
+            <p>Merah Putih E-Commerce</p>
+            <div id="nav-links">
+                <ul>
+                    <li><a href="#" id="nav-beranda">Beranda</a></li>
+                    <li><a href="#" id="nav-keranjang">Keranjang <span id="cart-count">0</span></a></li>
+                </ul>
+            </div>
+            <button id="hamburger-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. HALAMAN BERANDA (DAFTAR PRODUK) -->
+        <section id="page-beranda" class="page">
+            <h1>Produk Tersedia</h1>
+            <div id="product-list" class="product-grid">
+            </div>
+        </section>
+
+        <!-- 3. HALAMAN DETAIL PRODUK (SEMBUNYI SECARA DEFAULT) -->
+        <section id="page-detail-produk" class="page hidden">
+            <div class="detail-container">
+                <div class="detail-img">
+                    <img id="detail-gambar" src="" alt="Gambar Produk">
+                </div>
+                <div class="detail-info">
+                    <h2 id="detail-nama">Nama Produk</h2>
+                    <p class="price" id="detail-harga">Rp 0</p>
+                    <h3>Deskripsi</h3>
+                    <p id="detail-deskripsi">Deskripsi produk akan muncul di sini.</p>
+                    <h3>Review</h3>
+                    <div class="reviews">
+                        <p><strong>Andi:</strong> Barangnya bagus, pengiriman cepat!</p>
+                        <p><strong>Budi:</strong> Sesuai dengan ekspektasi. Mantap!</p>
+                    </div>
+                    <button id="add-to-cart-btn">Masukkan ke Keranjang</button>
+                    <button id="checkout-now-btn">Beli Sekarang</button>
+                    <button id="back-to-home-btn">Kembali</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. HALAMAN KERANJANG (SEMBUNYI SECARA DEFAULT) -->
+        <section id="page-keranjang" class="page hidden">
+            <h1>Keranjang Belanja</h1>
+            <div id="cart-items-container">
+            </div>
+            <div class="cart-total">
+                <h3>Total: <span id="cart-total-price">Rp 0</span></h3>
+                <button id="checkout-btn" class="checkout-button">Checkout</button>
+            </div>
+        </section>
+
+        <!-- 5. HALAMAN CHECKOUT (SEMBUNYI SECARA DEFAULT) -->
+        <section id="page-checkout" class="page hidden">
+            <h1>Formulir Pembayaran</h1>
+            <form id="payment-form">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
+
+                <label for="alamat">Alamat Pengiriman:</label>
+                <textarea id="alamat" name="alamat" required></textarea>
+
+                <label>Metode Pembayaran:</label>
+                <div class="payment-options">
+                    <input type="radio" id="cod" name="payment" value="cod" checked>
+                    <label for="cod">Bayar di Tempat (COD)</label>
+                </div>
+                <div class="payment-options">
+                    <input type="radio" id="transfer" name="payment" value="transfer">
+                    <label for="transfer">Transfer Bank</label>
+                </div>
+                
+                <button type="submit" class="checkout-button">Konfirmasi Pembayaran</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Merah Putih.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

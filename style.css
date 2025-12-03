@@ -1,0 +1,315 @@
+/* Import Font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Reset dan Pengaturan Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ff0000;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 1. Navigasi Bar */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #5a67d8;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #5a67d8;
+}
+
+#cart-count {
+    background-color: #e53e3e;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.8rem;
+    vertical-align: top;
+}
+
+/* Konten Utama */
+main {
+    padding: 2rem 5%;
+}
+
+.page {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.page h1, .page h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+/* Class untuk menyembunyikan elemen */
+.hidden {
+    display: none;
+}
+
+/* 2. Halaman Beranda - Grid Produk */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-item h3 {
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.product-item .price {
+    color: #5a67d8;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* 3. Halaman Detail Produk */
+.detail-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.detail-img {
+    flex: 1;
+    min-width: 300px;
+}
+
+.detail-img img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.detail-info {
+    flex: 2;
+}
+
+.detail-info .price {
+    font-size: 1.5rem;
+    color: #5a67d8;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.reviews {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #666;
+}
+
+button {
+    background-color: #5a67d8;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+}
+
+button:hover {
+    background-color: #434190;
+}
+
+#back-to-home-btn {
+    background-color: #666;
+}
+#back-to-home-btn:hover {
+    background-color: #444;
+}
+
+/* 4. Halaman Keranjang */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info h4 {
+    margin-bottom: 0.2rem;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-item-actions button {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.cart-total {
+    text-align: right;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+
+/* 5. Halaman Checkout (Form) */
+#payment-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#payment-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+#payment-form input[type="text"],
+#payment-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#payment-form .payment-options {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    background-color: #333;
+    color: #fff;
+}
+
+#hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsif untuk Tablet dan Layar Menengah */
+@media (max-width: 992px) {
+    nav p {
+        display: none;
+    }
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    #nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #nav-links.nav-active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    #hamburger-btn {
+        display: block;
+    }
+
+    .detail-container {
+        flex-direction: column;
+    }
+}
